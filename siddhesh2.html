@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhesh Kudale | Digital Marketing & SEO Specialist</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#fcfcfc',
+                            100: '#f4f4f5',
+                            800: '#27272a',
+                            900: '#18181b',
+                            accent: '#2563eb'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
+            color: #171717;
+        }
+        /* Custom minimalist scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        .cherry-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        /* Style adjustments for minimalist design matching pd2.png reference */
+        .section-line {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #737373;
+        }
+        .section-line::before,
+        .section-line::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .section-line:not(:empty)::before {
+            margin-right: 1.5em;
+        }
+        .section-line:not(:empty)::after {
+            margin-left: 1.5em;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-zinc-800 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-zinc-200 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Brand Logo / Monogram -->
+            <a href="#hero" class="flex items-center gap-2 text-zinc-900 font-bold text-lg tracking-tight hover:opacity-80 transition-opacity">
+                <span class="border border-zinc-900 px-2 py-0.5 rounded text-sm bg-zinc-900 text-white font-mono">SK</span>
+                <span>Siddhesh Kudale</span>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600">
+                <a href="#about" class="hover:text-zinc-900 transition-colors">About</a>
+                <a href="#skills" class="hover:text-zinc-900 transition-colors">Skills & Tools</a>
+                <a href="#metrics" class="hover:text-zinc-900 transition-colors">Metrics</a>
+                <a href="#certifications" class="hover:text-zinc-900 transition-colors">Certifications</a>
+                <a href="#education" class="hover:text-zinc-900 transition-colors">Education</a>
+                <a href="#audit-tool" class="hover:text-zinc-900 transition-colors">SEO Audit Tool</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openModal('resume-modal')" class="text-xs border border-zinc-300 hover:border-zinc-900 text-zinc-800 px-3.5 py-2 rounded-md font-medium transition-all hover:bg-zinc-50">
+                    <i class="fa-solid fa-file-arrow-down mr-1.5"></i>Resume
+                </button>
+                <a href="#contact" class="text-xs bg-zinc-900 hover:bg-zinc-800 text-white px-4 py-2 rounded-md font-medium transition-all shadow-sm">
+                    Hire Me
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-zinc-600 hover:text-zinc-900 focus:outline-none" aria-label="Toggle menu">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-zinc-200 px-4 pt-2 pb-6 space-y-3 text-sm">
+            <a href="#about" class="block py-2 text-zinc-700 hover:text-zinc-900">About Me</a>
+            <a href="#skills" class="block py-2 text-zinc-700 hover:text-zinc-900">Skills & Tools</a>
+            <a href="#metrics" class="block py-2 text-zinc-700 hover:text-zinc-900">Key Metrics</a>
+            <a href="#certifications" class="block py-2 text-zinc-700 hover:text-zinc-900">Certifications</a>
+            <a href="#education" class="block py-2 text-zinc-700 hover:text-zinc-900">Education</a>
+            <a href="#audit-tool" class="block py-2 text-zinc-700 hover:text-zinc-900">SEO Audit Tool</a>
+            <div class="pt-2 flex flex-col gap-2">
+                <button onclick="openModal('resume-modal')" class="w-full text-center border border-zinc-300 py-2 rounded-md text-xs font-semibold">View Resume</button>
+                <a href="#contact" class="w-full text-center bg-zinc-900 text-white py-2 rounded-md text-xs font-semibold">Contact / Hire Me</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Interactive Sakura/Cherry Blossom Animation -->
+    <section id="hero" class="relative min-h-[85vh] flex items-center justify-center bg-white border-b border-zinc-200 overflow-hidden py-16">
+        <!-- Sakura Canvas Animation -->
+        <canvas id="cherry-blossom-canvas" class="cherry-canvas"></canvas>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            <!-- Location Badge for Mumbai HR Targeting -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-zinc-200 bg-zinc-50/80 text-xs text-zinc-700 font-medium mb-6 backdrop-blur-sm">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                <span>Open for Digital Marketing Internships in Mumbai</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-zinc-900 tracking-tight leading-tight mb-4">
+                Hi, I'm <span class="text-zinc-900 underline decoration-zinc-300 underline-offset-8">Siddhesh Kudale</span>
+            </h1>
+
+            <p class="text-lg sm:text-xl text-zinc-600 max-w-2xl mx-auto font-light leading-relaxed mb-8">
+                Digital Marketing & SEO Specialist looking to help Mumbai digital agencies boost organic search traffic, keyword rankings, and ROI through data-driven campaigns.
+            </p>
+
+            <!-- Quick HR Value Proposition Pill Highlights -->
+            <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 text-xs font-medium text-zinc-700">
+                <span class="bg-zinc-100 border border-zinc-200 px-3 py-1.5 rounded-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-award text-amber-600"></i> 4x Certified (HubSpot & Google)
+                </span>
+                <span class="bg-zinc-100 border border-zinc-200 px-3 py-1.5 rounded-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-magnifying-glass-chart text-blue-600"></i> Technical & On-Page SEO
+                </span>
+                <span class="bg-zinc-100 border border-zinc-200 px-3 py-1.5 rounded-md flex items-center gap-1.5">
+                    <i class="fa-solid fa-chart-line text-emerald-600"></i> GA4 & GSC Analytics Proficient
+                </span>
+            </div>
+
+            <!-- CTA Group -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#contact" class="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 text-white font-medium px-7 py-3 rounded-md transition-all shadow-md flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-xs"></i> Contact for Hiring
+                </a>
+                <a href="#skills" class="w-full sm:w-auto border border-zinc-300 hover:border-zinc-900 text-zinc-800 font-medium px-7 py-3 rounded-md transition-all hover:bg-zinc-50 flex items-center justify-center gap-2">
+                    Explore Technical Skills <i class="fa-solid fa-arrow-down text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section (Clean Wireframe Style) -->
+    <section id="about" class="py-20 bg-white border-b border-zinc-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">About Me</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <!-- Text Content -->
+                <div class="md:col-span-8 space-y-4 text-zinc-600 leading-relaxed text-sm sm:text-base">
+                    <p class="text-zinc-900 font-medium text-lg">
+                        Motivated Digital Marketing enthusiast with a focused specialization in Organic SEO, Technical Website Audits, and Keyword Research.
+                    </p>
+                    <p>
+                        Currently pursuing my <strong>Bachelor of Commerce (FYB.Com)</strong> at Valia College, Mumbai. I combine commercial aptitude with digital execution skills to help businesses build strong online visibility.
+                    </p>
+                    <p>
+                        I am a fast learner with a keen eye for real-time search trends, content optimization, and online growth strategies. Equipped with recognized credentials from <strong>HubSpot Academy</strong> and <strong>Google Skillshop</strong>, I am actively seeking an internship opportunity in Mumbai's leading digital agencies to deliver measurable results on client accounts.
+                    </p>
+                </div>
+
+                <!-- Minimal Profile Card / Avatar Box -->
+                <div class="md:col-span-4 bg-zinc-50 border border-zinc-200 p-6 rounded-lg text-center space-y-3">
+                    <div class="w-20 h-20 mx-auto rounded-full bg-zinc-800 text-white flex items-center justify-center font-bold text-2xl shadow-inner">
+                        SK
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-zinc-900 text-base">Siddhesh Kudale</h3>
+                        <p class="text-xs text-zinc-500">SEO & Growth Intern Candidate</p>
+                    </div>
+                    <div class="pt-2 border-t border-zinc-200 text-xs text-zinc-600 space-y-1">
+                        <p class="flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-location-dot text-zinc-400"></i> Versova / Andheri, Mumbai
+                        </p>
+                        <p class="flex items-center justify-center gap-1.5">
+                            <i class="fa-solid fa-graduation-cap text-zinc-400"></i> FYB.Com Student
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics & Impact Section (Quantifiable Numbers for Agency HRs) -->
+    <section id="metrics" class="py-16 bg-zinc-50 border-b border-zinc-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">Agency Value Highlights</h2>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <!-- Metric Item 1 -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-mono mb-1">4+</div>
+                    <div class="text-xs uppercase font-semibold text-zinc-500 tracking-wider">Industry Certifications</div>
+                    <p class="text-[11px] text-zinc-400 mt-2">HubSpot & Google Skillshop Verified</p>
+                </div>
+
+                <!-- Metric Item 2 -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-mono mb-1">100%</div>
+                    <div class="text-xs uppercase font-semibold text-zinc-500 tracking-wider">GA4 & GSC Readiness</div>
+                    <p class="text-[11px] text-zinc-400 mt-2">Hands-on Search Console Mastery</p>
+                </div>
+
+                <!-- Metric Item 3 -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-mono mb-1">90%+</div>
+                    <div class="text-xs uppercase font-semibold text-zinc-500 tracking-wider">On-Page Optimization</div>
+                    <p class="text-[11px] text-zinc-400 mt-2">Targeted Meta & Structural Audit</p>
+                </div>
+
+                <!-- Metric Item 4 -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="text-3xl sm:text-4xl font-extrabold text-zinc-900 font-mono mb-1">24/7</div>
+                    <div class="text-xs uppercase font-semibold text-zinc-500 tracking-wider">Trend Adaptability</div>
+                    <p class="text-[11px] text-zinc-400 mt-2">Agile & Mumbai Market Aware</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Skill & Tool Matrix Section -->
+    <section id="skills" class="py-20 bg-white border-b border-zinc-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">Technical Skills & Toolset</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Tool Card: Google Search Console -->
+                <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded bg-white border border-zinc-200 flex items-center justify-center text-blue-600 mb-4 shadow-sm">
+                        <i class="fa-solid fa-chart-line text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-zinc-900 text-base mb-1">Google Search Console</h3>
+                    <p class="text-xs text-zinc-600 mb-3">Indexing analysis, URL inspection, sitemap submissions, performance tracking, and keyword query diagnosis.</p>
+                    <span class="inline-block bg-zinc-200 text-zinc-800 text-[10px] font-semibold px-2 py-0.5 rounded">Core SEO Tool</span>
+                </div>
+
+                <!-- Tool Card: Google Analytics 4 -->
+                <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded bg-white border border-zinc-200 flex items-center justify-center text-amber-600 mb-4 shadow-sm">
+                        <i class="fa-solid fa-chart-pie text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-zinc-900 text-base mb-1">Google Analytics (GA4)</h3>
+                    <p class="text-xs text-zinc-600 mb-3">User behavior tracking, traffic acquisition reports, organic session monitoring, and engagement metrics.</p>
+                    <span class="inline-block bg-zinc-200 text-zinc-800 text-[10px] font-semibold px-2 py-0.5 rounded">Analytics & Reporting</span>
+                </div>
+
+                <!-- Tool Card: SEMrush -->
+                <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded bg-white border border-zinc-200 flex items-center justify-center text-orange-600 mb-4 shadow-sm">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-zinc-900 text-base mb-1">SEMrush</h3>
+                    <p class="text-xs text-zinc-600 mb-3">Competitor analysis, keyword gap research, backlink profiling, and site health audits.</p>
+                    <span class="inline-block bg-zinc-200 text-zinc-800 text-[10px] font-semibold px-2 py-0.5 rounded">Competitor Intelligence</span>
+                </div>
+
+                <!-- Tool Card: WordPress -->
+                <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg hover:shadow-md transition-all">
+                    <div class="w-10 h-10 rounded bg-white border border-zinc-200 flex items-center justify-center text-sky-600 mb-4 shadow-sm">
+                        <i class="fa-brands fa-wordpress text-lg"></i>
+                    </div>
+                    <h3 class="font-bold text-zinc-900 text-base mb-1">WordPress Optimization</h3>
+                    <p class="text-xs text-zinc-600 mb-3">On-page content editing, meta title/description setup, Yoast/RankMath integration, and page layout updates.</p>
+                    <span class="inline-block bg-zinc-200 text-zinc-800 text-[10px] font-semibold px-2 py-0.5 rounded">CMS & On-Page</span>
+                </div>
+            </div>
+
+            <!-- Functional Competencies breakdown -->
+            <div class="mt-10 bg-zinc-900 text-white p-6 rounded-lg">
+                <h3 class="text-xs uppercase tracking-wider font-semibold text-zinc-400 mb-4">Core Digital Marketing Capabilities</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Keyword Research
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Technical SEO Audits
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Meta Tag Optimization
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Content Structuring
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Search Trend Monitoring
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Competitor Keyword Analysis
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Inbound Marketing
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-check text-emerald-400"></i> Campaign Reporting
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Certifications Section -->
+    <section id="certifications" class="py-20 bg-zinc-50 border-b border-zinc-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">Verified Certifications</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Certification 1: HubSpot SEO Certified -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg flex items-start gap-4 shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="p-3 bg-orange-50 border border-orange-200 rounded text-orange-600 shrink-0">
+                        <i class="fa-solid fa-certificate text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold text-zinc-900 text-base">SEO Certified</h3>
+                            <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2 py-0.5 rounded">HubSpot</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 mt-1">Covers search engine algorithms, keyword research strategy, link building, and measuring SEO performance.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-zinc-500 font-mono">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Verified Credential
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 2: HubSpot SEO II Certified -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg flex items-start gap-4 shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="p-3 bg-orange-50 border border-orange-200 rounded text-orange-600 shrink-0">
+                        <i class="fa-solid fa-certificate text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold text-zinc-900 text-base">SEO II Certified</h3>
+                            <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2 py-0.5 rounded">HubSpot</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 mt-1">Advanced technical optimization, structured data, page speed enhancements, and scalable content strategies.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-zinc-500 font-mono">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Verified Credential
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 3: HubSpot Digital Marketing Certified -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg flex items-start gap-4 shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="p-3 bg-orange-50 border border-orange-200 rounded text-orange-600 shrink-0">
+                        <i class="fa-solid fa-bullhorn text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold text-zinc-900 text-base">Digital Marketing Certified</h3>
+                            <span class="text-[10px] bg-orange-100 text-orange-800 font-bold px-2 py-0.5 rounded">HubSpot</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 mt-1">Foundational strategies for content creation, inbound marketing, social media tactics, and lead conversion funnels.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-zinc-500 font-mono">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Verified Credential
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certification 4: Google Skillshop -->
+                <div class="bg-white border border-zinc-200 p-6 rounded-lg flex items-start gap-4 shadow-sm hover:border-zinc-400 transition-all">
+                    <div class="p-3 bg-blue-50 border border-blue-200 rounded text-blue-600 shrink-0">
+                        <i class="fa-brands fa-google text-2xl"></i>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-bold text-zinc-900 text-base">Fundamentals of Digital Marketing</h3>
+                            <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-2 py-0.5 rounded">Google Skillshop</span>
+                        </div>
+                        <p class="text-xs text-zinc-600 mt-1">Accredited by Google covering search ads, organic search fundamentals, web analytics, and local business marketing.</p>
+                        <div class="mt-3 flex items-center gap-2 text-xs text-zinc-500 font-mono">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Verified Credential
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Timeline Section -->
+    <section id="education" class="py-20 bg-white border-b border-zinc-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">Education Background</h2>
+
+            <div class="relative border-l-2 border-zinc-200 ml-4 pl-6 space-y-8">
+                <!-- Edu 1: College -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-zinc-900 border-4 border-white"></div>
+                    <span class="text-xs font-mono font-bold text-zinc-500 uppercase tracking-wider">Present</span>
+                    <h3 class="text-base font-bold text-zinc-900">Bachelor Of Commerce Degree First Year (FYB.Com)</h3>
+                    <p class="text-sm font-medium text-zinc-700">Valia College Of Arts, Commerce and Science, Mumbai</p>
+                    <p class="text-xs text-zinc-500 mt-1">Focusing on business fundamentals, commercial principles, and digital marketing practical applications.</p>
+                </div>
+
+                <!-- Edu 2: HSC -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-zinc-300 border-4 border-white"></div>
+                    <span class="text-xs font-mono font-bold text-zinc-500 uppercase tracking-wider">Completed 2026</span>
+                    <h3 class="text-base font-bold text-zinc-900">Higher Secondary Certificate (HSC)</h3>
+                    <p class="text-sm font-medium text-zinc-700">Valia Junior College, Mumbai</p>
+                    <p class="text-xs text-zinc-500 mt-1">Commerce stream coursework with emphasis on mathematics, organization of commerce, and computer studies.</p>
+                </div>
+
+                <!-- Edu 3: SSC -->
+                <div class="relative">
+                    <div class="absolute -left-[31px] top-1.5 w-4 h-4 rounded-full bg-zinc-300 border-4 border-white"></div>
+                    <span class="text-xs font-mono font-bold text-zinc-500 uppercase tracking-wider">Completed 2024</span>
+                    <h3 class="text-base font-bold text-zinc-900">Secondary School Certificate (SSC)</h3>
+                    <p class="text-sm font-medium text-zinc-700">ST. Anthony's High School, Versova, Mumbai</p>
+                    <p class="text-xs text-zinc-500 mt-1">Primary and secondary school education with academic consistency and extracurricular engagement.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Agency Hiring Feature: Live SEO Audit Checklist Generator -->
+    <section id="audit-tool" class="py-20 bg-zinc-50 border-b border-zinc-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-4">Interactive Agency Showcase</h2>
+            <p class="text-center text-xs text-zinc-500 mb-10">Test Siddhesh's SEO Audit Framework (Built for Agency Workflows)</p>
+
+            <div class="bg-white border border-zinc-200 rounded-lg p-6 shadow-sm">
+                <div class="mb-6 border-b border-zinc-200 pb-4">
+                    <h3 class="font-bold text-zinc-900 text-lg">Instant On-Page SEO Checklist Tool</h3>
+                    <p class="text-xs text-zinc-600">Enter any web page target keyword below to generate an immediate audit execution checklist.</p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <input id="audit-keyword" type="text" placeholder="e.g. Best Digital Marketing Agency in Mumbai" class="flex-1 px-4 py-2.5 border border-zinc-300 rounded-md text-sm focus:outline-none focus:border-zinc-900 font-sans" value="SEO Services Mumbai">
+                    <button onclick="generateAuditChecklist()" class="bg-zinc-900 hover:bg-zinc-800 text-white font-medium px-6 py-2.5 rounded-md text-sm transition-all shrink-0">
+                        Run Quick Audit Checklist
+                    </button>
+                </div>
+
+                <div id="audit-results" class="bg-zinc-50 border border-zinc-200 rounded-md p-4 space-y-3 text-xs">
+                    <div class="flex items-center justify-between border-b border-zinc-200 pb-2">
+                        <span class="font-bold text-zinc-900">Audit Target Keyword:</span>
+                        <span id="target-kw-display" class="font-mono text-zinc-800 font-bold bg-zinc-200 px-2 py-0.5 rounded">SEO Services Mumbai</span>
+                    </div>
+
+                    <div class="space-y-2 text-zinc-700">
+                        <div class="flex items-start gap-2">
+                            <input type="checkbox" checked disabled class="mt-0.5 rounded text-zinc-900">
+                            <span><strong>Meta Title:</strong> Limit to 50-60 characters, include primary target keyword near the beginning.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <input type="checkbox" checked disabled class="mt-0.5 rounded text-zinc-900">
+                            <span><strong>Meta Description:</strong> 150-160 characters with clear call-to-action & secondary LSI keywords.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <input type="checkbox" checked disabled class="mt-0.5 rounded text-zinc-900">
+                            <span><strong>H1 Structure:</strong> Single H1 tag per page explicitly containing target phrase.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <input type="checkbox" checked disabled class="mt-0.5 rounded text-zinc-900">
+                            <span><strong>Search Console Indexing:</strong> Inspect URL status & ensure zero canonicalization blocks.</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <input type="checkbox" checked disabled class="mt-0.5 rounded text-zinc-900">
+                            <span><strong>Internal Linking:</strong> Add 3-5 relevant anchor text links pointing to contextual sub-services.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HR Contact & Direct Connect Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+            <h2 class="section-line text-sm uppercase tracking-widest font-semibold mb-12">Contact / Hire Me</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+                <!-- Direct HR Info Cards -->
+                <div class="md:col-span-5 space-y-4">
+                    <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg">
+                        <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Direct Phone / WhatsApp</div>
+                        <a href="tel:+917208670954" class="text-base font-bold text-zinc-900 hover:underline block font-mono">
+                            +91 7208670954
+                        </a>
+                        <p class="text-[11px] text-zinc-500 mt-1">Available for immediate calls & WhatsApp messages.</p>
+                    </div>
+
+                    <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg">
+                        <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Email Address</div>
+                        <a href="mailto:siddheshkudale25@gmail.com" class="text-sm font-bold text-zinc-900 hover:underline block font-mono break-all">
+                            siddheshkudale25@gmail.com
+                        </a>
+                        <p class="text-[11px] text-zinc-500 mt-1">Inquiries answered within 2-4 hours.</p>
+                    </div>
+
+                    <div class="bg-zinc-50 border border-zinc-200 p-5 rounded-lg">
+                        <div class="text-xs text-zinc-500 uppercase tracking-wider font-semibold mb-1">Preferred Work Location</div>
+                        <p class="text-sm font-bold text-zinc-900">Mumbai Metropolitan Region (MMR)</p>
+                        <p class="text-[11px] text-zinc-500 mt-1">Open to On-site (Andheri/Bandra/Lower Parel/BKC) or Hybrid agency roles.</p>
+                    </div>
+                </div>
+
+                <!-- Agency HR Quick Inquiry Form -->
+                <div class="md:col-span-7 bg-zinc-50 border border-zinc-200 p-6 rounded-lg">
+                    <h3 class="font-bold text-zinc-900 text-base mb-1">Send an Agency Internship Query</h3>
+                    <p class="text-xs text-zinc-500 mb-4">Fill out the quick form below to get in touch immediately.</p>
+
+                    <form id="hr-contact-form" onsubmit="handleFormSubmit(event)" class="space-y-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-700 mb-1">Your Name / Agency Name</label>
+                            <input type="text" required placeholder="e.g. Talent Acquisition @ Mumbai Digital" class="w-full px-3 py-2 border border-zinc-300 rounded text-xs focus:outline-none focus:border-zinc-900">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-700 mb-1">Your Email or Mobile No.</label>
+                            <input type="text" required placeholder="hr@agency.com or +91..." class="w-full px-3 py-2 border border-zinc-300 rounded text-xs focus:outline-none focus:border-zinc-900">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-zinc-700 mb-1">Internship Role / Message</label>
+                            <textarea rows="3" required placeholder="Hi Siddhesh, we'd like to invite you for an interview for an SEO intern position..." class="w-full px-3 py-2 border border-zinc-300 rounded text-xs focus:outline-none focus:border-zinc-900"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-zinc-900 hover:bg-zinc-800 text-white font-medium py-2.5 rounded text-xs transition-all shadow-sm">
+                            Submit Inquiry
+                        </button>
+                    </form>
+
+                    <!-- Alert Box -->
+                    <div id="form-alert" class="hidden mt-3 p-3 bg-emerald-100 border border-emerald-300 text-emerald-800 text-xs rounded">
+                        Thank you! Your message has been prepared. Siddhesh will respond to you shortly!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-zinc-900 text-zinc-400 text-xs border-t border-zinc-800">
+        <div class="max-w-6xl mx-auto px-4 text-center sm:flex sm:justify-between sm:items-center space-y-4 sm:space-y-0">
+            <p>© 2026 Siddhesh Kudale. All Rights Reserved.</p>
+            <p class="text-zinc-500">Designed for Digital Agencies & HR Recruiters in Mumbai.</p>
+            <div class="flex justify-center gap-4 text-zinc-300">
+                <a href="mailto:siddheshkudale25@gmail.com" class="hover:text-white" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="tel:+917208670954" class="hover:text-white" title="Phone"><i class="fa-solid fa-phone"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resume View Modal -->
+    <div id="resume-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white border border-zinc-300 rounded-lg max-w-2xl w-full p-6 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('resume-modal')" class="absolute top-4 right-4 text-zinc-400 hover:text-zinc-900 text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="text-xl font-bold text-zinc-900 mb-1">Siddhesh Kudale - Resume Overview</h3>
+            <p class="text-xs text-zinc-500 mb-4">Digital Marketing & SEO Enthusiast | Versova, Mumbai</p>
+
+            <div class="space-y-4 text-xs text-zinc-700 border-t border-zinc-200 pt-4">
+                <div>
+                    <h4 class="font-bold text-zinc-900 text-sm">Professional Summary</h4>
+                    <p class="mt-1">Motivated Digital Marketing enthusiast specializing in SEO. Fast learner with a keen eye for trends, content optimization, and online growth strategies. Eager to contribute and learn from real world projects.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-zinc-900 text-sm">Technical Skills</h4>
+                    <p class="mt-1">A good base knowledge of SEO tools: Google Search Console, Google Analytics, SEMrush, WordPress.</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-zinc-900 text-sm">Education</h4>
+                    <ul class="list-disc pl-4 mt-1 space-y-1">
+                        <li><strong>FYB.Com (Pursuing)</strong> - Valia College Of Arts, Commerce and Science, Mumbai</li>
+                        <li><strong>HSC (2026)</strong> - Valia Junior College, Mumbai</li>
+                        <li><strong>SSC (2024)</strong> - ST. Anthony's High School, Versova</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-zinc-900 text-sm">Additional Certifications</h4>
+                    <ul class="list-disc pl-4 mt-1 space-y-1">
+                        <li>Google Skillshop: Fundamentals Digital Marketing Certified</li>
+                        <li>HubSpot: SEO Certified</li>
+                        <li>HubSpot: SEO II Certified</li>
+                        <li>HubSpot: Digital Marketing Certified</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end gap-3 border-t border-zinc-200 pt-4">
+                <button onclick="copyResumeText()" class="px-4 py-2 border border-zinc-300 text-zinc-800 rounded text-xs font-medium hover:bg-zinc-50">
+                    <i class="fa-regular fa-copy mr-1"></i> Copy Text Resume
+                </button>
+                <button onclick="closeModal('resume-modal')" class="px-4 py-2 bg-zinc-900 text-white rounded text-xs font-medium hover:bg-zinc-800">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript for Sakura Animation & Interactions -->
+    <script>
+        // Sakura / Cherry Blossom Falling Petals Animation
+        (function() {
+            const canvas = document.getElementById('cherry-blossom-canvas');
+            const ctx = canvas.getContext('2d');
+
+            let width = canvas.width = canvas.parentElement.offsetWidth;
+            let height = canvas.height = canvas.parentElement.offsetHeight;
+
+            window.addEventListener('resize', () => {
+                if (canvas && canvas.parentElement) {
+                    width = canvas.width = canvas.parentElement.offsetWidth;
+                    height = canvas.height = canvas.parentElement.offsetHeight;
+                }
+            });
+
+            const petalCount = 28;
+            const petals = [];
+
+            class Petal {
+                constructor() {
+                    this.reset();
+                }
+
+                reset() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * -height;
+                    this.size = Math.random() * 7 + 5;
+                    this.speedY = Math.random() * 1.2 + 0.6;
+                    this.speedX = Math.random() * 0.8 - 0.4;
+                    this.angle = Math.random() * Math.PI * 2;
+                    this.angularSpeed = (Math.random() - 0.5) * 0.02;
+                    this.opacity = Math.random() * 0.5 + 0.3;
+                }
+
+                update() {
+                    this.y += this.speedY;
+                    this.x += Math.sin(this.angle) * 0.5 + this.speedX;
+                    this.angle += this.angularSpeed;
+
+                    if (this.y > height + 20 || this.x < -20 || this.x > width + 20) {
+                        this.reset();
+                        this.y = -10;
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    ctx.beginPath();
+                    // Gentle Sakura petal shape
+                    ctx.ellipse(0, 0, this.size, this.size / 2, 0, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 183, 197, ${this.opacity})`;
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+
+            for (let i = 0; i < petalCount; i++) {
+                petals.push(new Petal());
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                petals.forEach(petal => {
+                    petal.update();
+                    petal.draw();
+                });
+                requestAnimationFrame(animate);
+            }
+
+            animate();
+        })();
+
+        // Mobile Navigation Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (menuBtn && mobileMenu) {
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+
+        // Modal Controls
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+        // Copy Resume Text function for Clipboard
+        function copyResumeText() {
+            const resumeText = `SIDDHESH KUDALE
+Phone: +91 7208670954 | Email: siddheshkudale25@gmail.com
+Location: Versova, Mumbai, India
+
+PROFESSIONAL SUMMARY:
+Motivated Digital Marketing enthusiast specializing in SEO. Fast learner with a keen eye for trends, content optimization, and online growth strategies. Eager to contribute and learn from real world projects.
+
+TECHNICAL SKILLS:
+Google Search Console, Google Analytics (GA4), SEMrush, WordPress.
+
+EDUCATION:
+- Pursuing FYB.Com - Valia College Of Arts, Commerce and Science, Mumbai
+- Higher Secondary Certificate (HSC) (2026) - Valia Junior College, Mumbai
+- Secondary School Certificate (SSC) (2024) - ST. Anthony's High School, Versova
+
+CERTIFICATIONS:
+- Google Skillshop: Fundamentals of Digital Marketing Certified
+- HubSpot: SEO Certified
+- HubSpot: SEO II Certified
+- HubSpot: Digital Marketing Certified`;
+
+            const dummy = document.createElement('textarea');
+            document.body.appendChild(dummy);
+            dummy.value = resumeText;
+            dummy.select();
+            document.execCommand('copy');
+            document.body.removeChild(dummy);
+
+            alert('Resume text copied to clipboard!');
+        }
+
+        // Interactive Audit Tool Checklist Update
+        function generateAuditChecklist() {
+            const kw = document.getElementById('audit-keyword').value;
+            const display = document.getElementById('target-kw-display');
+            if (kw.trim() !== '') {
+                display.textContent = kw;
+            }
+        }
+
+        // HR Form Handling
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            alertBox.classList.remove('hidden');
+            e.target.reset();
+            setTimeout(() => {
+                alertBox.classList.add('hidden');
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
